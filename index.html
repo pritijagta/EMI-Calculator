@@ -17,16 +17,19 @@
 
        body{
         height: 300px;
-        border: 1px solid grey;
-        border-radius: 20px;
-        margin-top: 50px;
+       
+        margin-top: 100px;
+        background-color:grey ;
         
        }
 
        .container
        {
-        margin-top: 40px;
-
+        
+        border: 1px solid grey;
+        border-radius: 20px;
+        height: 300px;
+        
        }
      
        button
@@ -61,18 +64,18 @@
             var p=document.getElementById("inputamt").value;
             var n=(document.getElementById("inputyear").value)*12;
             var r=(document.getElementById("inputrate").value)/1200;
-            if(p<0)
+            if(p<=0 )
             {
-                document.getElementById("result").innerHTML= `Amount is negative..Enter valid Amount`.fontcolor("red").italics();
+                document.getElementById("result").innerHTML= `Amount is negative or zero..Enter valid Amount`.fontcolor("red").italics();
             }
-            else if(n<0)
+            else if(n<=0)
             {
-                document.getElementById("result").innerHTML=`Year is negative..Enter valid Year`.fontcolor("red").italics();
+                document.getElementById("result").innerHTML=`Year is negative or zero..Enter valid Year`.fontcolor("red").italics();
 
             }
-            else if(r<0)
+            else if(r<=0)
             {
-                document.getElementById("result").innerHTML=`Rate is negative..Enter valid rate`.fontcolor("red").italics();
+                document.getElementById("result").innerHTML=`Rate is negative or zero..Enter valid rate`.fontcolor("red").italics();
 
             }
 
@@ -92,23 +95,12 @@
     </script>
 </head>
 
-<body class="container-fluid w-75 text-center " >
+<body class="container-fluid w-75 text-center" >
 
-    <h3 class="mt-2 text-decoration-underline">EMI CALCULATOR</h3>
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="container ">
-        <div class="row">
+    <h1 class=" text-decoration-underline text-light mt-2">EMI CALCULATOR</h1>    
+    <div class="container bg-light ">
+      
+        <div class="row mt-5">
             <div class="col-4">
                 <span>Amount you need</span> <input type="text" value="50000" id="inputamt" size="15px" required>
             </div>
@@ -120,19 +112,19 @@
             </div>
     
         </div>
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-4">
                 <input class="inputrange" value="50000" id="Amount" onchange="Amount()" type="range" min="50000" max="4000000">
             </div>
             <div class="col-4 ">
                 <input class="inputrange" value="5" onchange="year()" id="year" type="range" min="1" max="5">
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <input class="inputrange" value="10.5" id="rate" onchange="rate()" type="range" min="10.5" max="21" step="0.5">
             </div>
     
         </div>
-       <div class="row ">
+       <div class="row mt-2">
         <div class="col-4 d-flex justify-content-between"  >
             <span> &#8377;50,000</span> <span>&#8377;40,00,000</span>
         </div>
@@ -141,13 +133,13 @@
             <span>1 year</span> <span>5 year</span>
         </div>
 
-        <div class="col-3 ms- d-flex justify-content-between">
+        <div class="col-4 ms- d-flex justify-content-between">
             <span>10.5%</span> <span>21%</span>
         </div>
 
        </div>
 
-       <div class="row ms-4">
+       <div class="row ms-2">
         
         <button onclick="calculate()" class="btn btn-primary w-25 mt-5">Calculate</button>
         <span id="result">
