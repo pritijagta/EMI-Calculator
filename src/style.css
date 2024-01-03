@@ -1,0 +1,28 @@
+.inputrange
+       {
+        width: 300px;
+        margin-top: 20px;
+       }
+
+       body{
+        height: 300px;
+       
+        margin-top: 100px;
+        background-color:grey ;
+        
+       }
+
+       .container
+       {
+        
+        border: 1px solid grey;
+        border-radius: 20px;
+        height: 300px;
+        
+       }
+     
+       button
+       {
+        display: flex;
+        justify-content: end;
+       }
