@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+       .inputrange
+       {
+        width: 300px;
+        margin-top: 20px;
+       }
+
+       body{
+        height: 300px;
+        border: 1px solid grey;
+        border-radius: 20px;
+        margin-top: 50px;
+        
+       }
+
+       .container
+       {
+        margin-top: 40px;
+
+       }
+     
+       button
+       {
+        display: flex;
+        justify-content: end;
+       }
+      
+    </style>
+
+    <script>
+        
+        function Amount() {
+            var amt=document.getElementById("Amount").value;
+            document.getElementById("inputamt").value=amt;
+            
+        }
+
+        function year()
+        {
+            var year=document.getElementById("year").value;
+            document.getElementById("inputyear").value=year;
+        }
+        
+        function rate()
+        {
+            var rate=document.getElementById("rate").value;
+            document.getElementById("inputrate").value=rate;
+        }
+        function calculate()
+        {
+            var p=document.getElementById("inputamt").value;
+            var n=(document.getElementById("inputyear").value)*12;
+            var r=(document.getElementById("inputrate").value)/1200;
+            if(p<0)
+            {
+                document.getElementById("result").innerHTML= `Amount is negative..Enter valid Amount`.fontcolor("red").italics();
+            }
+            else if(n<0)
+            {
+                document.getElementById("result").innerHTML=`Year is negative..Enter valid Year`.fontcolor("red").italics();
+
+            }
+            else if(r<0)
+            {
+                document.getElementById("result").innerHTML=`Rate is negative..Enter valid rate`.fontcolor("red").italics();
+
+            }
+
+            
+            else
+            {
+           
+            var num=(p*r*Math.pow(1+r,n));
+            var deno=(Math.pow(1+r,n))-1;
+            var res = (num/deno).toFixed(2);
+             document.getElementById("result").innerHTML=`Your Monthly EMI will be ${res} per month`.fontcolor("green");
+            }
+           
+
+        }
+
+    </script>
+</head>
+
+<body class="container-fluid w-75 text-center " >
+
+    <h3 class="mt-2 text-decoration-underline">EMI CALCULATOR</h3>
+    <div class="container ">
+        <div class="row">
+            <div class="col-4">
+                <span>Amount you need</span> <input type="text" value="50000" id="inputamt" size="15px" required>
+            </div>
+            <div class="col-4 ">
+                <span>for</span> <input type="text" id="inputyear" value="5" size="5px" required><span>  years</span>
+            </div>
+            <div class="col-4">
+                <span>Interest rate</span> <input type="text" id="inputrate" value="10.5" size="5px" re><span> %</span>
+            </div>
+    
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <input class="inputrange" value="50000" id="Amount" onchange="Amount()" type="range" min="50000" max="4000000">
+            </div>
+            <div class="col-4 ">
+                <input class="inputrange" value="5" onchange="year()" id="year" type="range" min="1" max="5">
+            </div>
+            <div class="col-4">
+                <input class="inputrange" value="10.5" id="rate" onchange="rate()" type="range" min="10.5" max="21" step="0.5">
+            </div>
+    
+        </div>
+       <div class="row ">
+        <div class="col-4 d-flex justify-content-between"  >
+            <span> &#8377;50,000</span> <span>&#8377;40,00,000</span>
+        </div>
+
+        <div class="col-4 d-flex justify-content-between">
+            <span>1 year</span> <span>5 year</span>
+        </div>
+
+        <div class="col-4 d-flex justify-content-between">
+            <span>10.5%</span> <span>21%</span>
+        </div>
+
+       </div>
+
+       <div class="row ms-4">
+        
+        <button onclick="calculate()" class="btn btn-primary w-25 mt-5">Calculate</button>
+        <span id="result">
+
+        </span>
+
+       </div>
+
+    </div>
+        
+   
+</body>
+</html>
