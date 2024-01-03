@@ -20,29 +20,25 @@ function calculate()
     var p=document.getElementById("inputamt").value;
     var n=(document.getElementById("inputyear").value)*12;
     var r=(document.getElementById("inputrate").value)/1200;
-    if(p<=0 )
+    if(p<=0 || n<=0 || r<=0 )
     {
-        document.getElementById("result").innerHTML= `Amount is negative or zero..Enter valid Amount`.fontcolor("red").italics();
+        document.getElementById("result").innerHTML= ` Invalid Data..Either Negative or Zero`;
+        document.getElementById("result").style.color="red";
     }
-    else if(n<=0)
-    {
-        document.getElementById("result").innerHTML=`Year is negative or zero..Enter valid Year`.fontcolor("red").italics();
-
-    }
-    else if(r<=0)
-    {
-        document.getElementById("result").innerHTML=`Rate is negative or zero..Enter valid rate`.fontcolor("red").italics();
-
-    }
-
-    
-    else
-    {
    
+   
+    else 
+    {
     var num=(p*r*Math.pow(1+r,n));
     var deno=(Math.pow(1+r,n))-1;
     var res = (num/deno).toFixed(2);
-     document.getElementById("result").innerHTML=`Your Monthly EMI will be ${res} per month`.fontcolor("green");
+     document.getElementById("result").innerHTML=`Your Monthly EMI will be ${res} per month`;
+     if (isNaN(res)) {
+        document.getElementById("result").innerHTML = "Error calculating EMI. Please check your input values"
+    } else {
+        document.getElementById("result").innerHTML = "Your Monthly EMI will be $" + res + " per month";
+        document.getElementById("result").style.color = "green";
+    }
     }
    
 
